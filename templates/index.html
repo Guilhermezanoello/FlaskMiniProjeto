@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}
+    <button onclick="window.location.href='/top_scores';">Top Scores</button>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>Quiz Interativo com Gamificação</h1>
+    <form action="{{ url_for('quiz') }}" method="POST">
+        <label for="category">Escolha a categoria:</label>
+        <select name="category" id="category">
+            {% for category in categories %}
+                <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Começar Quiz</button>
+    </form>
+</div>
+{% endblock %}

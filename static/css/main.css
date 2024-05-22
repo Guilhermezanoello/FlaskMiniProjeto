@@ -1,0 +1,154 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para a página inicial (index.html) */
+.index-page {
+    background-image: url('https://img.freepik.com/fotos-gratis/colagem-de-caixa-misteriosa_23-2150061733.jpg?w=740');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff; /* Define a cor do texto como branco */
+}
+
+.index-page h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.index-page form {
+    margin-top: 20px;
+}
+
+.index-page label {
+    font-size: 18px;
+    color: #fff; /* Define a cor do texto como branco */
+}
+
+.index-page select {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.index-page button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.index-page button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para a página do Quiz (quiz.html) */
+.quiz-page {
+    /* background-color: #b2fd04;  *//* Define uma cor de fundo diferente */
+    padding: 20px;
+    min-height: 100vh; /* Defina uma altura mínima de 100% da altura da janela de visualização */
+}
+
+.quiz-page h2 {
+    color: #fff; /* Define a cor do título como branco */
+}
+
+.question {
+    background-color: #fff;
+    color: #333; /* Cor do texto */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question p {
+    font-size: 18px;
+    color: #333; /* Cor do texto */
+}
+
+.question label {
+    color: #333; /* Cor do texto para as opções */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .index-page h1 {
+        font-size: 24px;
+    }
+
+    .question p {
+        font-size: 16px;
+    }
+}
+
+/* Estilos para a página de Ranking (ranking.html) */
+.ranking-page {
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.ranking-page h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.ranking-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.ranking-page th,
+.ranking-page td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.ranking-page th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.ranking-page tr:nth-child(even) {
+    background-color: #007bff;
+}
+
+.ranking-page button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ranking-page button:hover {
+    background-color: #0056b3;
+}

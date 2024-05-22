@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block head %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+{% block body %}
+<div class="container quiz-page">
+    <h1>Quiz Interativo</h1>
+    <h2>Categoria: {{ category }}</h2>
+    <form id="quiz-form">
+        {% for question in questions %}
+            <div class="question">
+                <p>{{ question.question }}</p>
+                <input type="hidden" name="question{{ loop.index }}" value="{{ question.id }}">
+                <input type="radio" id="option{{ loop.index }}_a" name="answer{{ loop.index }}" value="a">
+                <label for="option{{ loop.index }}_a">{{ question.options.a }}</label><br>
+                <input type="radio" id="option{{ loop.index }}_b" name="answer{{ loop.index }}" value="b">
+                <label for="option{{ loop.index }}_b">{{ question.options.b }}</label><br>
+                <input type="radio" id="option{{ loop.index }}_c" name="answer{{ loop.index }}" value="c">
+                <label for="option{{ loop.index }}_c">{{ question.options.c }}</label><br>
+                <input type="radio" id="option{{ loop.index }}_d" name="answer{{ loop.index }}" value="d">
+                <label for="option{{ loop.index }}_d">{{ question.options.d }}</label><br>
+                <p class="feedback" id="feedback{{ loop.index }}"></p>
+            </div>
+        {% endfor %}
+        <input type="hidden" name="category" value="{{ category }}">
+        <input type="text" id="username" name="username" placeholder="Enter your name" required>
+        <button id="finish-quiz">Finish Quiz</button>
+    </form>
+    <h3>Total Score: <span id="total-score">0</span></h3>
+</div>
+
+<script>
+$(document).ready(function() {
+    let totalScore = 0;
+
+    $('input[type=radio]').change(function() {
+        const questionIndex = $(this).attr('name').replace('answer', '');
+        const questionId = $('input[name="question' + questionIndex + '"]').val();
+        const userAnswer = $(this).val();
+
+        $.ajax({
+            url: "{{ url_for('check_answer') }}",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                question_id: questionId,
+                user_answer: userAnswer
+            }),
+            success: function(response) {
+                $('#feedback' + questionIndex).text(response.feedback);
+                if (response.points > 0) {
+                    totalScore += response.points;
+                    $('#total-score').text(totalScore);
+                }
+            },
+            error: function(xhr) {
+                alert('Error: ' + xhr.responseJSON.error);
+            }
+        });
+    });
+
+    $('#finish-quiz').click(function() {
+        const username = $('#username').val();
+        const category = $('input[name="category"]').val();
+        
+        $.ajax({
+            url: "{{ url_for('save_score') }}",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                username: username,
+                category: category,
+                score: totalScore
+            }),
+            success: function(response) {
+                window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
+            },
+            error: function(xhr) {
+                alert('Error: ' + xhr.responseJSON.error);
+            }
+        });
+    });
+});
+
+function finalizeQuiz() {
+    $('#quiz-form').attr('method', 'GET');
+    $('#quiz-form').attr('action', '{{ url_for("index") }}');
+    $('#quiz-form').submit();
+}
+</script>
+{% endblock %}

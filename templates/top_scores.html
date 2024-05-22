@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>Top Scores</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Top Scores</h1>
+    {% for category, scores in top_scores.items() %}
+        <h2>{{ category }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for score in scores %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ score['username'] }}</td>
+                        <td>{{ score['score'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+    <button onclick="window.location.href='/';">Voltar para o Início</button>
+{% endblock %}

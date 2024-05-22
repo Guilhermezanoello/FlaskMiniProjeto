@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div class="container ranking-page">
+    <h1>Ranking - Categoria: {{ category }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Nome</th>
+                <th>Pontuação</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in scores %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ score.username }}</td>
+                <td>{{ score.score }}</td>
+                <td>{{ score.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="window.location.href='/';">Voltar para o Início</button>
+</div>
+{% endblock %}
