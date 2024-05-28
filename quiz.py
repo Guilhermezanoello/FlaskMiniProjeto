@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for
+import os
 from azure.cosmos import CosmosClient
 
 app = Flask(__name__)
