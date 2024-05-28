@@ -6,8 +6,15 @@ from azure.cosmos import CosmosClient
 app = Flask(__name__)
 
 # Configurações para conectar ao Cosmos DB
+<<<<<<< HEAD
 ENDPOINT = 'https://miniprojeto-edu-gui-joao-1.documents.azure.com:443/'
 KEY = 'Z6d1uTxRWSx64WEURjzdCwil8xLpiHL4fMbZPcWOreQHejsSMuVqCHu7PfhNgPPSbB4L4I39tQhkACDbkYkcFA=='
+=======
+#ENDPOINT = 'https://cosmo-guilherme-miniprojeto.documents.azure.com:443/'
+ENDPOINT = 'https://miniprojeto-edu-gui-joao-1.documents.azure.com:443/'
+#KEY = '54d3zT0rS5ACZJl35atKzJOB4Wgxq0tZ3WkhbYofE8GOdRGeikCaAk8MGQ8GHxQPp3DLbMhq6VaMACDb1Pbymg=='
+KEY = 'yh2sa1coqqzqgmZAZqdJDaZ70rEjozc4QNh86oWcjap8gmRzPBA807v84xs0uYzMtn7nKuifgAyIACDb5Olb5A=='
+>>>>>>> 38ce2eb713fa8753680fd01eb5dfa43a29970128
 DATABASE_ID = 'QuizGami'
 CONTAINER_ID = 'Questions'
 SCORES_CONTAINER_ID = 'Scores'
