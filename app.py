@@ -1,13 +1,13 @@
 import datetime
-import uuid
+import uuid, os
 from flask import Flask, redirect, render_template, url_for, request, jsonify
 from azure.cosmos import CosmosClient
 
 app = Flask(__name__)
 
 # Configurações para conectar ao Cosmos DB
-ENDPOINT = 'https://cosmo-guilherme-miniprojeto.documents.azure.com:443/'
-KEY = '54d3zT0rS5ACZJl35atKzJOB4Wgxq0tZ3WkhbYofE8GOdRGeikCaAk8MGQ8GHxQPp3DLbMhq6VaMACDb1Pbymg=='
+ENDPOINT = 'https://miniprojeto-edu-gui-joao-1.documents.azure.com:443/'
+KEY = 'Z6d1uTxRWSx64WEURjzdCwil8xLpiHL4fMbZPcWOreQHejsSMuVqCHu7PfhNgPPSbB4L4I39tQhkACDbkYkcFA=='
 DATABASE_ID = 'QuizGami'
 CONTAINER_ID = 'Questions'
 SCORES_CONTAINER_ID = 'Scores'
@@ -126,4 +126,6 @@ def top_scores():
     return render_template('top_scores.html', top_scores=top_scores)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if os.environ.get('FLASK_ENV') == 'development':
+        port = int(os.environ.get('PORT', 5000))
+        app.run(debug=True)
