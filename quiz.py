@@ -44,4 +44,6 @@ def quiz():
     # Renderização do template do quiz com as perguntas recuperadas
     return render_template('quiz.html', category=category, questions=questions)
 if __name__ == '__main__':
-    app.run(debug=True)
+    if os.environ.get('FLASK_ENV') == 'development':
+        port = int(os.environ.get('PORT', 5000))
+        app.run(debug=True)
