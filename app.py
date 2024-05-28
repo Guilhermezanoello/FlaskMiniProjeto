@@ -128,4 +128,6 @@ def top_scores():
     return render_template('top_scores.html', top_scores=top_scores)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if os.environ.get('FLASK_ENV') == 'development':
+        port = int(os.environ.get('PORT', 5000))
+        app.run(debug=True)
