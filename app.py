@@ -6,7 +6,7 @@ from azure.cosmos import CosmosClient
 app = Flask(__name__)
 
 # Configurações para conectar ao Cosmos DB
-ENDPOINT = 'https://miniprojeto-edu-gui-joao1.documents.azure.com:443/'
+ENDPOINT = 'https://miniprojeto-edu-gui-joao-1.documents.azure.com:443/'
 KEY = 'Z6d1uTxRWSx64WEURjzdCwil8xLpiHL4fMbZPcWOreQHejsSMuVqCHu7PfhNgPPSbB4L4I39tQhkACDbkYkcFA=='
 DATABASE_ID = 'QuizGami'
 CONTAINER_ID = 'Questions'
