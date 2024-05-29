@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Configurações para conectar ao Cosmos DB
 ENDPOINT = 'https://miniprojeto-edu-gui-joao1.documents.azure.com:443/'
-KEY = 'q4aSAc9Gj9knR6Z6Dvyr33ykaunyMZFNAPJ3Eo7CHnE54wBmqYMrXLuJawf7xsKU2YEzNq5OXTgSACDbCZb8uA=='
+KEY = 'm1gpl3CVs6tLPJdyrojuxGvDSauwAH6cb0bZ2oqMpHwHvZXjJda983NRPrxOU8eQOEePaxdhKmlCACDb2Ermag=='
 DATABASE_ID = 'QuizGami'
 CONTAINER_ID = 'Questions'
 
