@@ -8,20 +8,21 @@
     <h2>Categoria: {{ category }}</h2>
     <form id="quiz-form">
         {% for question in questions %}
-            <div class="question">
-                <p>{{ question.question }}</p>
-                <input type="hidden" name="question{{ loop.index }}" value="{{ question.id }}">
-                <input type="radio" id="option{{ loop.index }}_a" name="answer{{ loop.index }}" value="a">
-                <label for="option{{ loop.index }}_a">{{ question.options.a }}</label><br>
-                <input type="radio" id="option{{ loop.index }}_b" name="answer{{ loop.index }}" value="b">
-                <label for="option{{ loop.index }}_b">{{ question.options.b }}</label><br>
-                <input type="radio" id="option{{ loop.index }}_c" name="answer{{ loop.index }}" value="c">
-                <label for="option{{ loop.index }}_c">{{ question.options.c }}</label><br>
-                <input type="radio" id="option{{ loop.index }}_d" name="answer{{ loop.index }}" value="d">
-                <label for="option{{ loop.index }}_d">{{ question.options.d }}</label><br>
-                <p class="feedback" id="feedback{{ loop.index }}"></p>
-            </div>
-        {% endfor %}
+    <div class="question">
+        <img src="{{ question.imagem }}" alt="Image for question {{ loop.index }}">
+        <p>{{ question.question }}</p>
+        <input type="hidden" name="question{{ loop.index }}" value="{{ question.id }}">
+        <input type="radio" id="option{{ loop.index }}_a" name="answer{{ loop.index }}" value="a">
+        <label for="option{{ loop.index }}_a">{{ question.options.a }}</label><br>
+        <input type="radio" id="option{{ loop.index }}_b" name="answer{{ loop.index }}" value="b">
+        <label for="option{{ loop.index }}_b">{{ question.options.b }}</label><br>
+        <input type="radio" id="option{{ loop.index }}_c" name="answer{{ loop.index }}" value="c">
+        <label for="option{{ loop.index }}_c">{{ question.options.c }}</label><br>
+        <input type="radio" id="option{{ loop.index }}_d" name="answer{{ loop.index }}" value="d">
+        <label for="option{{ loop.index }}_d">{{ question.options.d }}</label><br>
+        <p class="feedback" id="feedback{{ loop.index }}"></p>
+    </div>
+    {% endfor %}
         <input type="hidden" name="category" value="{{ category }}">
         <input type="text" id="username" name="username" placeholder="Enter your name" required>
         <button id="finish-quiz">Finish Quiz</button>

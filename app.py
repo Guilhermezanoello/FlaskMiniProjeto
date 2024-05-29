@@ -43,7 +43,8 @@ def quiz():
                     "c": item["options"]["c"],
                     "d": item["options"]["d"],
                 },
-                "correct": item["correct"]
+                "correct": item["correct"],
+                "imagem": item["imagem"]
             }
             questions.append(question)
 
