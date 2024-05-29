@@ -90,6 +90,15 @@ body {
     color: #333; /* Cor do texto para as opções */
 }
 
+/* Garantir que a imagem não ultrapasse os limites do container da questão */
+.question img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centralizar a imagem */
+    border-radius: 10px; /* Opcional: Adicionar bordas arredondadas para as imagens */
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .container {
