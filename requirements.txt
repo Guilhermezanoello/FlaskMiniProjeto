@@ -2,3 +2,4 @@ Flask
 azure-storage-blob
 azure-cosmos
 werkzeug
+azure-functions
