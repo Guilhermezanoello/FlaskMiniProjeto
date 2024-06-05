@@ -176,17 +176,18 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-}
-
+    display: flex; /* Added line */
+  }
+  
 .time-final {
     position: fixed;
     left: 50px;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 999; 
-}
+    z-index: 999;
+  }
 
-.score-final h3,
+/* .score-final h3,
 .score-final span {
     display: inline;
-}
+} */
