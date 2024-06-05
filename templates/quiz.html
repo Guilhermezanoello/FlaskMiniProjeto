@@ -28,6 +28,7 @@
         <button type="button" id="finish-quiz">Finish Quiz</button>
     </form>
     <h3>Total Score: <span id="total-score">0</span></h3>
+    <h3>Time Remaining: <span id="time-remaining"></span></h3>
 </div>
 
 <script>
@@ -87,33 +88,24 @@ $(document).ready(function() {
     }
 
     // Timer function
-    const quizStartTime = localStorage.getItem('quizStartTime');
     const timeLimit = 60 * 1000; // 1 minute in milliseconds
+    let quizStartTime = localStorage.getItem('quizStartTime');
+
+    if (!quizStartTime) {
+        quizStartTime = Date.now();
+        localStorage.setItem('quizStartTime', quizStartTime);
+    }
+
     const endTime = parseInt(quizStartTime) + timeLimit;
 
     function checkTime() {
         const currentTime = Date.now();
-        if (currentTime >= endTime) {
-            const username = $('#username').val();
-            const category = $('input[name="category"]').val();
-            
-            $.ajax({
-                url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
-                method: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    username: username,
-                    category: category,
-                    score: totalScore
-                }),
-                success: function(response) {
-                    window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
-                },
-                error: function(xhr) {
-                    alert('Error: ' + xhr.responseJSON.error);
-                }
-            });
+        const timeRemaining = endTime - currentTime;
+        if (timeRemaining <= 0) {
+            $('#time-remaining').text("Time's up!");
+            finalizeQuiz();
         } else {
+            $('#time-remaining').text(Math.ceil(timeRemaining / 1000) + " seconds remaining");
             setTimeout(checkTime, 1000);
         }
     }
