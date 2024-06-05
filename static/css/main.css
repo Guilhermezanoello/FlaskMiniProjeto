@@ -174,11 +174,17 @@ body {
     position: fixed;
     left: 20px; 
     bottom: 20px; 
-    z-index: 999; 
+    z-index: 999;
 }
+
 .time-final {
     position: fixed;
     left: 20px; 
-    bottom: 20px; 
+    bottom: 50px;
     z-index: 999; 
+}
+
+.score-final h3,
+.score-final span {
+    display: inline;
 }
