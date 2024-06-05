@@ -172,7 +172,7 @@ body {
 
 .score-final {
     position: fixed;
-    left: 300px;
+    left: 225px;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
