@@ -164,7 +164,7 @@ body {
 
 .finish-quiz-btn {
     position: fixed;
-    right: 50%; 
+    right: 20px; 
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999; 
