@@ -58,7 +58,13 @@ $(document).ready(function() {
                     window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
                 },
                 error: function(xhr) {
-                    alert('Error: ' + xhr.responseJSON.error);
+                    let errorMessage = 'Unknown error';
+                    if (xhr.responseJSON && xhr.responseJSON.error) {
+                        errorMessage = xhr.responseJSON.error;
+                    } else if (xhr.statusText) {
+                        errorMessage = xhr.statusText;
+                    }
+                    alert('Error: ' + errorMessage);
                 }
             });
         }
@@ -86,7 +92,13 @@ $(document).ready(function() {
                 }
             },
             error: function(xhr) {
-                alert('Error: ' + xhr.responseJSON.error);
+                let errorMessage = 'Unknown error';
+                if (xhr.responseJSON && xhr.responseJSON.error) {
+                    errorMessage = xhr.responseJSON.error;
+                } else if (xhr.statusText) {
+                    errorMessage = xhr.statusText;
+                }
+                alert('Error: ' + errorMessage);
             }
         });
     });
@@ -116,5 +128,6 @@ $(document).ready(function() {
 
     checkTime();
 });
+
 </script>
 {% endblock %}
