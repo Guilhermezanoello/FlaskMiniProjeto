@@ -45,7 +45,7 @@ $(document).ready(function() {
             return;
         } else {
             $.ajax({
-                url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz?",
+                url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
