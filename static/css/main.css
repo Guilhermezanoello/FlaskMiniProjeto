@@ -172,15 +172,17 @@ body {
 
 .score-final {
     position: fixed;
-    left: 20px; 
+    left: 50%;
+    transform: translate(-50%, 0);
     bottom: 20px; 
     z-index: 999;
 }
 
 .time-final {
     position: fixed;
-    left: 20px; 
-    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 50px; 
     z-index: 999; 
 }
 
