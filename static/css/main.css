@@ -172,7 +172,17 @@ body {
 
 .score-final {
     position: fixed;
-    left: 50px;
+    left: 150px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: flex;
+    width: 200px;
+  }
+
+.score-total {
+    position: fixed;
+    left: 100px;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
@@ -182,7 +192,7 @@ body {
   
 .time-final {
     position: fixed;
-    left: 50px;
+    left: 100px;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
