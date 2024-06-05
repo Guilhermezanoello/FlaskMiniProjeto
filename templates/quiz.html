@@ -94,13 +94,16 @@ $(document).ready(function() {
     if (!quizStartTime) {
         quizStartTime = Date.now();
         localStorage.setItem('quizStartTime', quizStartTime);
+    } else {
+        quizStartTime = parseInt(quizStartTime); // Ensure it's an integer
     }
 
-    const endTime = parseInt(quizStartTime) + timeLimit;
+    const endTime = quizStartTime + timeLimit;
 
     function checkTime() {
         const currentTime = Date.now();
         const timeRemaining = endTime - currentTime;
+
         if (timeRemaining <= 0) {
             $('#time-remaining').text("Time's up!");
             finalizeQuiz();
