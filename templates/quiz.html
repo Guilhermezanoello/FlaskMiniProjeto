@@ -20,7 +20,7 @@
             <input type="radio" id="option{{ loop.index }}_c" name="answer{{ loop.index }}" value="c">
             <label for="option{{ loop.index }}_c">{{ question.options.c }}</label><br>
             <input type="radio" id="option{{ loop.index }}_d" name="answer{{ loop.index }}" value="d">
-            <label for="option{{ loop.index }}_d">{{ question.options.d }}</label><br>
+            <label for="option{{ loop.index }}_d">{{ question.options.d }}"></label><br>
             <p class="feedback" id="feedback{{ loop.index }}"></p>
         </div>
         {% endfor %}
@@ -68,6 +68,11 @@ $(document).ready(function() {
     function finalizeQuiz() {
         const username = $('#username').val();
         const category = $('input[name="category"]').val();
+
+        if (username.trim() === "") {
+            alert("Please enter your name.");
+            return;
+        }
 
         $.ajax({
             url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
