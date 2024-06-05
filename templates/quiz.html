@@ -35,6 +35,32 @@
 $(document).ready(function() {
     let totalScore = 0;
 
+    function finalizeQuiz() {
+        const username = $('#username').val();
+        const category = $('input[name="category"]').val();
+
+        if (username.trim() === "") {
+            alert("Please enter your name.");
+            return;
+        }
+
+        $.ajax({
+            url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                username: username,
+                category: category,
+                score: totalScore
+            }),
+            success: function(response) {
+                window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
+            },
+            error: function(xhr) {
+                alert('Error: ' + xhr.responseJSON.error);
+            }
+        });
+    }
     $('input[type=radio]').change(function() {
         const questionIndex = $(this).attr('name').replace('answer', '');
         const questionId = $('input[name="question' + questionIndex + '"]').val();
@@ -65,32 +91,6 @@ $(document).ready(function() {
         finalizeQuiz();
     });
 
-    function finalizeQuiz() {
-        const username = $('#username').val();
-        const category = $('input[name="category"]').val();
-
-        if (username.trim() === "") {
-            alert("Please enter your name.");
-            return;
-        }
-
-        $.ajax({
-            url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                username: username,
-                category: category,
-                score: totalScore
-            }),
-            success: function(response) {
-                window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
-            },
-            error: function(xhr) {
-                alert('Error: ' + xhr.responseJSON.error);
-            }
-        });
-    }
 
     // Timer function
     const timeLimit = 60 * 1000; // 1 minute in milliseconds
