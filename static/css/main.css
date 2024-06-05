@@ -168,3 +168,10 @@ body {
     bottom: 20px; /* Ajuste a margem inferior conforme necessário */
     z-index: 999; /* Garante que o botão esteja sempre acima de outros elementos */
 }
+
+.score-and-time {
+    position: fixed;
+    left: 20px; /* Ajuste a margem esquerda conforme necessário */
+    bottom: 20px; /* Ajuste a margem inferior conforme necessário */
+    z-index: 999; /* Garante que o botão esteja sempre acima de outros elementos */
+}
