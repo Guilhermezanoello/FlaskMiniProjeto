@@ -6,8 +6,8 @@
 <div class="container quiz-page">
     <h1>Quiz Interativo</h1>
     <h2>Categoria: {{ category }}</h2>
+    <input type="text" id="username" name="username" placeholder="Enter your name" required>
     <form id="quiz-form">
-        <input type="text" id="username" name="username" placeholder="Enter your name" required>
         {% for question in questions %}
     <div class="question">
         <img src="{{ question.imagem }}" alt="Image for question {{ loop.index }}">
@@ -25,7 +25,7 @@
     </div>
     {% endfor %}
         <input type="hidden" name="category" value="{{ category }}">
-        <button id="finish-quiz">Finish Quiz</button>
+        <button type="button" id="finish-quiz">Finish Quiz</button>
     </form>
     <h3>Total Score: <span id="total-score">0</span></h3>
 </div>
@@ -61,6 +61,10 @@ $(document).ready(function() {
     });
 
     $('#finish-quiz').click(function() {
+        finalizeQuiz();
+    });
+
+    function finalizeQuiz() {
         const username = $('#username').val();
         const category = $('input[name="category"]').val();
         
@@ -80,13 +84,41 @@ $(document).ready(function() {
                 alert('Error: ' + xhr.responseJSON.error);
             }
         });
-    });
-});
+    }
 
-function finalizeQuiz() {
-    $('#quiz-form').attr('method', 'GET');
-    $('#quiz-form').attr('action', '{{ url_for("index") }}');
-    $('#quiz-form').submit();
-}
+    // Timer function
+    const quizStartTime = localStorage.getItem('quizStartTime');
+    const timeLimit = 60 * 1000; // 1 minute in milliseconds
+    const endTime = parseInt(quizStartTime) + timeLimit;
+
+    function checkTime() {
+        const currentTime = Date.now();
+        if (currentTime >= endTime) {
+            const username = $('#username').val();
+            const category = $('input[name="category"]').val();
+            
+            $.ajax({
+                url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    username: username,
+                    category: category,
+                    score: totalScore
+                }),
+                success: function(response) {
+                    window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
+                },
+                error: function(xhr) {
+                    alert('Error: ' + xhr.responseJSON.error);
+                }
+            });
+        } else {
+            setTimeout(checkTime, 1000);
+        }
+    }
+
+    checkTime();
+});
 </script>
 {% endblock %}
