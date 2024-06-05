@@ -164,14 +164,21 @@ body {
 
 .finish-quiz-btn {
     position: fixed;
-    right: 20px; /* Ajuste a margem direita conforme necessário */
-    bottom: 20px; /* Ajuste a margem inferior conforme necessário */
-    z-index: 999; /* Garante que o botão esteja sempre acima de outros elementos */
+    right: 20px; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999; 
 }
 
-.score-and-time {
+.score-final {
     position: fixed;
-    left: 20px; /* Ajuste a margem esquerda conforme necessário */
-    bottom: 20px; /* Ajuste a margem inferior conforme necessário */
-    z-index: 999; /* Garante que o botão esteja sempre acima de outros elementos */
+    left: 20px; 
+    bottom: 20px; 
+    z-index: 999; 
+}
+.time-final {
+    position: fixed;
+    left: 20px; 
+    bottom: 20px; 
+    z-index: 999; 
 }
