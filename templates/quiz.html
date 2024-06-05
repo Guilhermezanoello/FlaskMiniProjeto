@@ -38,33 +38,37 @@ $(document).ready(function() {
     function finalizeQuiz() {
         const username = $('#username').val();
         const category = $('input[name="category"]').val();
+        console.log("Finalizing quiz for user:", username);  // Debug log
 
         if (username.trim() === "") {
             alert("Please enter your name.");
             return;
         } else {
             $.ajax({
-            url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                username: username,
-                category: category,
-                score: totalScore
-            }),
-            success: function(response) {
-                window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
-            },
-            error: function(xhr) {
-                alert('Error: ' + xhr.responseJSON.error);
-            }
-        });
+                url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    username: username,
+                    category: category,
+                    score: totalScore
+                }),
+                success: function(response) {
+                    console.log("Quiz finalized successfully:", response);  // Debug log
+                    window.location.href = "{{ url_for('ranking') }}" + "?category=" + category;
+                },
+                error: function(xhr) {
+                    alert('Error: ' + xhr.responseJSON.error);
+                }
+            });
         }
     }
+
     $('input[type=radio]').change(function() {
         const questionIndex = $(this).attr('name').replace('answer', '');
         const questionId = $('input[name="question' + questionIndex + '"]').val();
         const userAnswer = $(this).val();
+        console.log("Question answered:", questionId, userAnswer);  // Debug log
 
         $.ajax({
             url: "{{ url_for('check_answer') }}",
@@ -88,9 +92,9 @@ $(document).ready(function() {
     });
 
     $('#finish-quiz').click(function() {
+        console.log("Finish quiz button clicked");  // Debug log
         finalizeQuiz();
     });
-
 
     // Timer function
     const timeLimit = 60 * 1000; // 1 minute in milliseconds
