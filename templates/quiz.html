@@ -42,9 +42,8 @@ $(document).ready(function() {
         if (username.trim() === "") {
             alert("Please enter your name.");
             return;
-        }
-
-        $.ajax({
+        } else {
+            $.ajax({
             url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
             method: "POST",
             contentType: "application/json",
@@ -60,6 +59,7 @@ $(document).ready(function() {
                 alert('Error: ' + xhr.responseJSON.error);
             }
         });
+        }
     }
     $('input[type=radio]').change(function() {
         const questionIndex = $(this).attr('name').replace('answer', '');
