@@ -68,9 +68,9 @@ $(document).ready(function() {
     function finalizeQuiz() {
         const username = $('#username').val();
         const category = $('input[name="category"]').val();
-
+        
         $.ajax({
-            url: "{{ url_for('save_score') }}",
+            url: "https://finalizequizfunction.azurewebsites.net/api/FinalizeQuiz",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
@@ -89,15 +89,7 @@ $(document).ready(function() {
 
     // Timer function
     const timeLimit = 60 * 1000; // 1 minute in milliseconds
-    let quizStartTime = localStorage.getItem('quizStartTime');
-
-    if (!quizStartTime) {
-        quizStartTime = Date.now();
-        localStorage.setItem('quizStartTime', quizStartTime);
-    } else {
-        quizStartTime = parseInt(quizStartTime); // Ensure it's an integer
-    }
-
+    let quizStartTime = Date.now();
     const endTime = quizStartTime + timeLimit;
 
     function checkTime() {

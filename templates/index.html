@@ -5,14 +5,29 @@
 {% block body %}
 <div class="container">
     <h1>Quiz Interativo com Gamificação</h1>
-    <form action="{{ url_for('quiz') }}" method="POST">
+    <form id="category-form">
         <label for="category">Escolha a categoria:</label>
         <select name="category" id="category">
             {% for category in categories %}
                 <option value="{{ category }}">{{ category }}</option>
             {% endfor %}
         </select>
-        <button type="submit">Começar Quiz</button>
+        <button type="button" id="start-quiz">Começar Quiz</button>
     </form>
 </div>
+
+<script>
+document.getElementById('start-quiz').addEventListener('click', function() {
+    const category = document.getElementById('category').value;
+    const form = document.getElementById('category-form');
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'category';
+    input.value = category;
+    form.appendChild(input);
+    form.action = "{{ url_for('quiz') }}";
+    form.method = "POST";
+    form.submit();
+});
+</script>
 {% endblock %}
