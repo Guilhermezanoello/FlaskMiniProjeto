@@ -176,7 +176,8 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-    display: flex; /* Added line */
+    display: flex;
+    width: 200px;
   }
   
 .time-final {
@@ -186,8 +187,3 @@ body {
     transform: translate(-50%, -50%);
     z-index: 999;
   }
-
-/* .score-final h3,
-.score-final span {
-    display: inline;
-} */
