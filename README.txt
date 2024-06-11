@@ -8,7 +8,10 @@ ANTES DE TUDO COMEÇAR!!!
 
     $caminhoImagens="C:/Users/guilh/Desktop/images" # Troque aqui pelo seu caminho
 
-    # Explicar Configuração GitHub;
+ 2.1.Configuração GitHub;
+    Nota: - Caso pretenda utilizar esta aplicação web, terá de fazer a alteração dos respetivos nomes das funcionalidades
+	  - Alterar o URL de acesso do repositório do GitHub (Credenciais de autenticação) 
+
 
     Salve o Script.ps1 com suas respetivas altrerações e pode correr dentro do PowerShell com o comando .\Script.ps1
 
